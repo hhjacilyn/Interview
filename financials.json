@@ -1,0 +1,26 @@
+[
+  {
+    "date": "2025-01-10",
+    "account": "Savings",
+    "balance": 5000.50,
+    "currency": "USD"
+  },
+  {
+    "date": "2025-01-11",
+    "account": "Checking",
+    "balance": 1200.00,
+    "currency": "USD"
+  },
+  {
+    "date": "2025-01-12",
+    "account": "Investments",
+    "balance": 15000.00,
+    "currency": "USD"
+  },
+  {
+    "date": "2025-01-13",
+    "account": "Savings",
+    "balance": 5200.75,
+    "currency": "USD"
+  }
+]
