@@ -22,7 +22,7 @@ file_path = os.path.join(folder, file_name)
 
 # check if the file exists
 if not os.path.exists(file_path):
-    print(f"Error: File '{file_path}' not found.")
+    raise FileNotFoundError(f"File '{file_path}' not found.")
 else:
     with open(file_path, 'r') as file:
         data = json.load(file)   # read the JSON file
