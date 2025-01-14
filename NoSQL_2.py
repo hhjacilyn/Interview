@@ -1,5 +1,6 @@
 import json
 import os
+import pandas as pd
 from datetime import datetime
 from pymongo import MongoClient
 
@@ -29,20 +30,20 @@ else:
     print("Data successfully inserted into MongoDB!")
 
 
-# Step 4: Query data using pymongo
+# Step 4: Load JSON into a Pandas DataFrame for manipulation
+df = pd.DataFrame(data)
+
 print("\nALL records:")
-for record in collection.find():
-    print(record)
+print(df)
 
 
 print("\nBalances greater than $5000:")
-for record in collection.find({"balance": {"$gt": 5000}}):   # $gt: greater than
-    print(record)
+filtered_df = df[df['balance'] > 5000]
+print(filtered_df.drop(columns=['_id']).to_string(index=False))
 
 # _id: None - no grouping key is used, all records are treated as a single group
-pipeline = [{"$group": {"_id": None, "total_balance": {"$sum": "$balance"}}}]
-result = list(collection.aggregate(pipeline))  # convert the aggregation result into a list (list of dictionaries)
-print(f"\nTotal balance: {result[0]['total_balance']}")
+total_balance = df['balance'].sum()
+print(f"\nTotal balance: {total_balance}")
 
 
 # Step 5: Close the connection
