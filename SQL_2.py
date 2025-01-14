@@ -12,7 +12,7 @@ conn = sqlite3.connect("financial_data.db")
 cursor = conn.cursor()
 
 
-# Step 2: Drop the existing table if it exists
+# Step 2: Drop the table if it exists
 cursor.execute("DROP TABLE IF EXISTS financials")
 
 
@@ -37,7 +37,7 @@ file_name = f"financials_{today}.csv"  # f: allows embedding expressions into st
 csv_file_path = os.path.join(folder, file_name)  # os: ensures code works on different operating systems (path: \ for windows, / for Linus/macOS)
 
 # check if file exists
-if not os.path.exists(csv_file_path ):
+if not os.path.exists(csv_file_path):
     raise FileNotFoundError(f"File '{csv_file_path}' not found.")
 
 
